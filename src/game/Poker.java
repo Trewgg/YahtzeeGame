@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class Poker extends JFrame {
     private static final String TITLE = "Yahtzee game";
-    private static final int MAX_ROLLS_CNT = 3; //макс кол-во бросков
-    private static final int DICES_CNT = 5;     //кол-во кубиков
+    private static final int MAX_ROLLS_CNT = 3; //РјР°РєСЃ РєРѕР»-РІРѕ Р±СЂРѕСЃРєРѕРІ
+    private static final int DICES_CNT = 5;     //РєРѕР»-РІРѕ РєСѓР±РёРєРѕРІ
 
     private static final int ONE_PAIR = 5;
     private static final int TWO_PAIR = 10;
@@ -23,10 +23,10 @@ public class Poker extends JFrame {
 
     private int cntRolls = 0;
 
-    //Массив содержащий заголоки таблицы
+    //РњР°СЃСЃРёРІ СЃРѕРґРµСЂР¶Р°С‰РёР№ Р·Р°РіРѕР»РѕРєРё С‚Р°Р±Р»РёС†С‹
     private String[] headers = {"Category", "Score"};
 
-    //Массив содержащий информацию для таблицы
+    //РњР°СЃСЃРёРІ СЃРѕРґРµСЂР¶Р°С‰РёР№ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ С‚Р°Р±Р»РёС†С‹
     private String[][] data = {
             {"Aces", null},
             {"Twos", null},
@@ -55,7 +55,7 @@ public class Poker extends JFrame {
         setTitle(TITLE);
         setSize(600, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);    //по центру
+        setLocationRelativeTo(null);    //РїРѕ С†РµРЅС‚СЂСѓ
         setLayout(new BorderLayout());
 
         JButton buttonRoll = new JButton("Roll ");
@@ -83,11 +83,11 @@ public class Poker extends JFrame {
         panelLabels.add(buttonRoll);
         panelLabels.add(buttonClean);
 
-        //добавляем на форму панели
+        //РґРѕР±Р°РІР»СЏРµРј РЅР° С„РѕСЂРјСѓ РїР°РЅРµР»Рё
         add(panelLabels, BorderLayout.WEST);
         add(panelTable, BorderLayout.CENTER);
 
-        //кнопка Бросок
+        //РєРЅРѕРїРєР° Р‘СЂРѕСЃРѕРє
         buttonRoll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,34 +128,34 @@ public class Poker extends JFrame {
                     for (int i = 1; i <= DICES_CNT; i++) {
                         randForLabel = getRandom();
 
-                        //изменение иконок в зависимости от выпавших значений
+                        //РёР·РјРµРЅРµРЅРёРµ РёРєРѕРЅРѕРє РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹РїР°РІС€РёС… Р·РЅР°С‡РµРЅРёР№
                         switch (i) {
-                            case 1: //кубик 1 = Random 1
+                            case 1: //РєСѓР±РёРє 1 = Random 1
                                 dice1Value = randForLabel;
                                 dice1.setIcon(new ImageIcon("resources/" + randForLabel + ".jpg"));
                                 break;
-                            case 2: //кубик 2 = Random 2
+                            case 2: //РєСѓР±РёРє 2 = Random 2
                                 dice2Value = randForLabel;
                                 dice2.setIcon(new ImageIcon("resources/" + randForLabel + ".jpg"));
                                 break;
-                            case 3: //кубик 3 = Random 3
+                            case 3: //РєСѓР±РёРє 3 = Random 3
                                 dice3Value = randForLabel;
                                 dice3.setIcon(new ImageIcon("resources/" + randForLabel + ".jpg"));
                                 break;
-                            case 4: //кубик 4 = Random 4
+                            case 4: //РєСѓР±РёРє 4 = Random 4
                                 dice4Value = randForLabel;
                                 dice4.setIcon(new ImageIcon("resources/" + randForLabel + ".jpg"));
                                 break;
-                            case 5: //кубик 5 = Random 5
+                            case 5: //РєСѓР±РёРє 5 = Random 5
                                 dice5Value = randForLabel;
                                 dice5.setIcon(new ImageIcon("resources/" + randForLabel + ".jpg"));
                                 break;
                         }
 
-                        //очищение таблицы
+                        //РѕС‡РёС‰РµРЅРёРµ С‚Р°Р±Р»РёС†С‹
                         table.setValueAt("", randForLabel - 1, 1);
 
-                        //поиск количества повторений одного номера
+                        //РїРѕРёСЃРє РєРѕР»РёС‡РµСЃС‚РІР° РїРѕРІС‚РѕСЂРµРЅРёР№ РѕРґРЅРѕРіРѕ РЅРѕРјРµСЂР°
                         switch (randForLabel) {
                             case 1:
                                 doubling1++;
@@ -187,10 +187,10 @@ public class Poker extends JFrame {
                     }
                 }
 
-                //строка с суммой
+                //СЃС‚СЂРѕРєР° СЃ СЃСѓРјРјРѕР№
                 table.setValueAt(String.valueOf(sumSub), 6, 1);
 
-                //проверка комбинаций
+                //РїСЂРѕРІРµСЂРєР° РєРѕРјР±РёРЅР°С†РёР№
                 Combinations combinations = new Combinations();
                 onePair = combinations.OnePair(dice1Value, dice2Value, dice3Value, dice4Value, dice5Value);
                 twoPair = combinations.TwoPair(dice1Value, dice2Value, dice3Value, dice4Value, dice5Value);
@@ -245,14 +245,14 @@ public class Poker extends JFrame {
                     clearTable(table);
                 }
 
-                //строка с общей суммой
+                //СЃС‚СЂРѕРєР° СЃ РѕР±С‰РµР№ СЃСѓРјРјРѕР№
                 sumTotal = sumSub + resultScore;
                 table.setValueAt(String.valueOf(sumTotal), 16, 1);
 
             }
         });
 
-        //кнопка Очистить
+        //РєРЅРѕРїРєР° РћС‡РёСЃС‚РёС‚СЊ
         buttonClean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -268,12 +268,12 @@ public class Poker extends JFrame {
 
     }
 
-    //случайное число типа int от 1 до 5
+    //СЃР»СѓС‡Р°Р№РЅРѕРµ С‡РёСЃР»Рѕ С‚РёРїР° int РѕС‚ 1 РґРѕ 5
     public int getRandom(){
         return new Random().nextInt(DICES_CNT) + 1;
     }
 
-    //очистить значения на кубиках
+    //РѕС‡РёСЃС‚РёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РЅР° РєСѓР±РёРєР°С…
     public void clearDice(JLabel dice1, JLabel dice2, JLabel dice3, JLabel dice4, JLabel dice5) {
         for (int i = 1; i <= DICES_CNT; i++) {
             dice1.setIcon(new ImageIcon("resources/0.jpg"));
@@ -284,14 +284,14 @@ public class Poker extends JFrame {
         }
     }
 
-    //очистить в таблице строки 8-15
+    //РѕС‡РёСЃС‚РёС‚СЊ РІ С‚Р°Р±Р»РёС†Рµ СЃС‚СЂРѕРєРё 8-15
     public void clearTable(JTable table) {
         for (int i = 8; i <= 15; i++) {
             table.setValueAt("", i, 1);
         }
     }
 
-    //очистить всю таблицу
+    //РѕС‡РёСЃС‚РёС‚СЊ РІСЃСЋ С‚Р°Р±Р»РёС†Сѓ
     public void clearFullTable(JTable table) {
         for (int i = 0; i <= 16; i++) {
             table.setValueAt("", i, 1);
